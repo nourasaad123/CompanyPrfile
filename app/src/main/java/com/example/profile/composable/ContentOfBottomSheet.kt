@@ -1,8 +1,10 @@
 package com.example.profile.composable
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,8 +41,9 @@ fun ContentOfBottomSheet() {
     var location by rememberSaveable {
         mutableStateOf(" ")
     }
-    Column {
-        Row(horizontalArrangement = Arrangement.Center) {
+    Column (){
+        Row(
+            horizontalArrangement = Arrangement.Center) {
             TextField(
                 value = whatsapp,
                 onValueChange = {
@@ -50,7 +53,7 @@ fun ContentOfBottomSheet() {
                 modifier = Modifier
                     .padding(top = 6.dp, start = 40.dp, end = 20.dp),
                 trailingIcon = {
-                    Icon(
+                    Image(
                         painter = painterResource(id = R.drawable.whatsapp),
                         contentDescription = null
                     )
@@ -79,7 +82,7 @@ fun ContentOfBottomSheet() {
                 modifier = Modifier
                     .padding(top = 6.dp, start = 40.dp, end = 20.dp),
                 trailingIcon = {
-                    Icon(
+                    Image(
                         painter = painterResource(id = R.drawable.facebook),
                         contentDescription = null
                     )
@@ -108,7 +111,7 @@ fun ContentOfBottomSheet() {
                 modifier = Modifier
                     .padding(top = 6.dp, start = 40.dp, end = 20.dp),
                 trailingIcon = {
-                        Icon(
+                        Image(
                             painter = painterResource(id = R.drawable.linkedin),
                             contentDescription = null
                         )
@@ -137,7 +140,7 @@ fun ContentOfBottomSheet() {
                 modifier = Modifier
                     .padding(top = 6.dp, start = 40.dp, end = 20.dp, bottom = 60.dp),
                 trailingIcon = {
-                    Icon(
+                    Image(
                         painter = painterResource(id = R.drawable.map),
                         contentDescription = null
                     )

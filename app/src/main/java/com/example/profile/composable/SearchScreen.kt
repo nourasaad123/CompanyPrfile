@@ -82,9 +82,7 @@ fun SearchScreen() {
                 }
             }
         ) {
-            //   searchHistory.takeLast(3).forEach { item ->
             LazyColumn() {
-
                 items(searchHistory) {
                     searchHistory.forEach { item ->
 

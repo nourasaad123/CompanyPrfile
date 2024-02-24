@@ -53,7 +53,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.profile.composable.CustomTextFieldWithIconProfile
-import com.example.profile.composable.ModalBottomSheetSample
+import com.example.profile.composable.ModalBottomSheetForProfile
 
 import com.example.profile.ui.theme.ProfileTheme
 
@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ModalBottomSheetSample()
+                    ModalBottomSheetForProfile()
 
                 }
             }

@@ -80,7 +80,7 @@ fun ProfileImage() {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 40.dp)
+                .padding(top = 16.dp)
         ) {
             Image(
                 bitmap = bitmap.value.asImageBitmap(),

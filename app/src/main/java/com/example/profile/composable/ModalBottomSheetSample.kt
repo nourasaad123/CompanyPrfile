@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
@@ -29,6 +29,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,12 +38,13 @@ import kotlinx.coroutines.launch
 @Preview(showBackground = true)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ModalBottomSheetSample() {
+fun ModalBottomSheetForProfile() {
     var openBottomSheet by rememberSaveable {
         mutableStateOf(false)
     }
     var skipPartiallyExpanded by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+
     val bottomSheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = skipPartiallyExpanded
     )
@@ -90,7 +92,7 @@ fun ModalBottomSheetSample() {
         Spacer(modifier = Modifier.height(6.dp))
         CustomTextFieldWithIconProfile(
             value = editName,
-            onValueChanged = { editName = it },
+            onValueChanged = {newEdite -> editName=newEdite},
             label = "edit name"
         )
         Spacer(modifier = Modifier.height(6.dp))
@@ -117,7 +119,7 @@ fun ModalBottomSheetSample() {
             onClick = { openBottomSheet = !openBottomSheet },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 6.dp, start = 40.dp, end = 20.dp)
+                .padding(top = 6.dp, start = 20.dp, end = 20.dp,bottom=30.dp)
                 .clip(RoundedCornerShape(15.dp))
         ) {
             Text(text = "Add links")
@@ -140,9 +142,11 @@ fun ModalBottomSheetSample() {
                             openBottomSheet = false
                         }
                     }
-                }
+                },colors = ButtonDefaults.buttonColors(Color(0xFF8A97B7))
+                   ,modifier=Modifier
+                       .clip(RoundedCornerShape(15.dp))
                 ) {
-                    Text("Ok")
+                    Text("Ok",color=Color.Black)
                 }
             }
             ContentOfBottomSheet()

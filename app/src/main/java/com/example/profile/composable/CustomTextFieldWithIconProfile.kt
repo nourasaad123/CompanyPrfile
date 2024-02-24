@@ -20,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -39,7 +40,7 @@ fun CustomTextFieldWithIconProfile(
             OutlinedTextField(
                 value = value,
                 onValueChange = {
-                    onValueChanged(value)
+                    onValueChanged(it)
                 },
                 label = {
                     Text(text = label)
@@ -47,7 +48,7 @@ fun CustomTextFieldWithIconProfile(
                 },
                 shape = RoundedCornerShape(26.dp),
                 modifier = Modifier
-                    .padding(top = 6.dp, start = 40.dp, end = 20.dp),
+                    .padding(top = 6.dp, start = 40.dp, end = 30.dp),
                 trailingIcon = {
                     IconButton(onClick = { isEditing = false }) {
                         Icon(
@@ -80,7 +81,7 @@ fun CustomTextFieldWithIconProfile(
                 },
                 shape = RoundedCornerShape(26.dp),
                 modifier = Modifier
-                    .padding(top = 6.dp, start = 40.dp, end = 20.dp).clickable {  isEditing=true},
+                    .padding(top = 6.dp, start = 40.dp, end = 30.dp).clickable {  isEditing=true},
                 trailingIcon = {
                     IconButton(onClick = { isEditing = true}) {
                         Icon(
