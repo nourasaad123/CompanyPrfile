@@ -13,9 +13,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BottomSheetDefaults
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -27,12 +27,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.profile.R
+import com.example.profile.ui.theme.basicColor
 import kotlinx.coroutines.launch
 
 @Preview(showBackground = true)
@@ -88,11 +92,11 @@ fun ModalBottomSheetForProfile() {
                 text = "Save",
                 modifier = Modifier.clickable { notification.value = "Profile updated" })
         }
-        ProfileImage()
+        ProfileImage("Change Logo")
         Spacer(modifier = Modifier.height(6.dp))
         CustomTextFieldWithIconProfile(
             value = editName,
-            onValueChanged = {newEdite -> editName=newEdite},
+            onValueChanged = { newEdite -> editName = newEdite },
             label = "edit name"
         )
         Spacer(modifier = Modifier.height(6.dp))
@@ -119,7 +123,7 @@ fun ModalBottomSheetForProfile() {
             onClick = { openBottomSheet = !openBottomSheet },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 6.dp, start = 20.dp, end = 20.dp,bottom=30.dp)
+                .padding(top = 6.dp, start = 20.dp, end = 20.dp, bottom = 30.dp)
                 .clip(RoundedCornerShape(15.dp))
         ) {
             Text(text = "Add links")
@@ -135,18 +139,27 @@ fun ModalBottomSheetForProfile() {
             sheetState = bottomSheetState,
             windowInsets = windowInsets
         ) {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                Button(onClick = {
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(end = 2.dp),
+                horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.Top
+            ) {
+                IconButton(onClick = {
                     scope.launch { bottomSheetState.hide() }.invokeOnCompletion {
                         if (!bottomSheetState.isVisible) {
                             openBottomSheet = false
                         }
                     }
-                },colors = ButtonDefaults.buttonColors(Color(0xFF8A97B7))
-                   ,modifier=Modifier
-                       .clip(RoundedCornerShape(15.dp))
+                }, modifier = Modifier
+                    .clip(RoundedCornerShape(15.dp))
                 ) {
-                    Text("Ok",color=Color.Black)
+                    Icon(
+                        painter = painterResource(id = R.drawable.baseline_close_24),
+                        contentDescription = null,
+                        tint= Color(0xFF8A97B7)
+                    )
+                    //Text("Ok",color=Color.Black)
                 }
             }
             ContentOfBottomSheet()

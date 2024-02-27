@@ -1,4 +1,4 @@
-package com.example.profile.composable
+package com.example.profile.navigation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

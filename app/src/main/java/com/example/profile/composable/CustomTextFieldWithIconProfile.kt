@@ -73,7 +73,7 @@ fun CustomTextFieldWithIconProfile(
             OutlinedTextField(
                 value = value,
                 onValueChange = {
-                    onValueChanged(value)
+                    onValueChanged(it)
                 },
                 label = {
                     Text(text = label)

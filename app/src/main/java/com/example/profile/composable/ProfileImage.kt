@@ -46,7 +46,7 @@ import com.example.profile.R
 
 
 @Composable
-fun ProfileImage() {
+fun ProfileImage(text:String) {
     var showDialog by remember {
         mutableStateOf(false)
     }
@@ -100,7 +100,7 @@ fun ProfileImage() {
                     }
             )
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = " Change Logo")
+            Text(text = text)
         }
 
 
